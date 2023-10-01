@@ -1,0 +1,15 @@
+
+<!-- <div class="card flex justify-content-center">
+    <p-button label="Check" icon="pi pi-check" (onClick)="changeTheme()"></p-button>
+</div> -->
+<div class="layout-wrapper" [ngClass]="containerClass">
+    <app-topbar></app-topbar>
+    <div class="layout-sidebar">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="layout-main-container">
+        <div class="layout-main">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
