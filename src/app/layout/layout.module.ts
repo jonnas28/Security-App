@@ -6,12 +6,18 @@ import { ButtonModule } from 'primeng/button';
 import { LayoutService } from './service/layout.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { MenuComponent } from './menu/menu.component';
+import { AppMenuitemComponent } from './app.menuitem.component';
 
 
 @NgModule({
   declarations: [
     LayoutComponent, 
-    TopbarComponent, SidebarComponent],
+    TopbarComponent, 
+    SidebarComponent, 
+    MenuComponent,
+    AppMenuitemComponent
+  ],
   imports: [
     CommonModule,
     ButtonModule,
