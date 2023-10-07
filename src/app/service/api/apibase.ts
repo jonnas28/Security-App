@@ -8,6 +8,6 @@ export class ApiBase {
   protected transformOptions(options: any): Promise<any> {
 	// options.headers = options.headers.append('authorization', `Bearer ${this.tokenService.Token}`);
   //   return Promise.resolve(options);
-  return Promise.resolve(true);
+  return Promise.resolve(options);
   }
 }

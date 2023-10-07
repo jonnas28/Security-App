@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApiClient } from './service/api/apiClient';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,13 +15,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     LayoutModule,
     ButtonModule,
     BrowserModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    ApiClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
