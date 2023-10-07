@@ -8,6 +8,9 @@ const routes: Routes = [
     children:[
       {
         path:'', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+      },      
+      {
+        path:'permission', loadChildren: () => import('./pages/permission/permission.module').then(m => m.PermissionModule),
       }
     ]
   }

@@ -1,0 +1,32 @@
+<p-table #dt [value]="dataSource" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedItem" selectionMode="multiple" [rowHover]="true" dataKey="id">
+    <ng-template pTemplate="caption">
+        <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+            <h5 class="m-0">{{caption}}</h5>
+            <span class="block mt-2 md:mt-0 p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search..."  class="w-full sm:w-auto"/>
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem" *ngIf="allowMultipleSelection">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th *ngFor="let column of dataColumns">
+                {{column.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+        <tr>
+            <td *ngIf="allowMultipleSelection">
+                <p-tableCheckbox [value]="item"></p-tableCheckbox>
+            </td>
+            <td *ngFor="let data of dataColumns">
+                <span class="p-column-title">Name</span>
+                {{item[data.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

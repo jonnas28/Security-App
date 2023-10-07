@@ -26,6 +26,11 @@ export var navigation:NavigationNode[]=[
             permissionName:'BRANCH_VIEW'
         },
         {
+          label:'Permission',
+          routerLink:'/permission',
+          permissionName:'PERMISSION_VIEW',
+        },
+        {
           label:'Customer',
           routerLink:'/customer',
           permissionName:'CUSTOMER_VIEW',
