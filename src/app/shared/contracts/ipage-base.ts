@@ -5,4 +5,9 @@ export declare interface IPageBase<T>{
     columns:IDataColumn[];
     item?:T;
     selectedItem:T[];
+
+    addRecord():void;
+    viewRecord(data:T):void;
+    updateRecord(data:T):void;
+    deleteRecord(data:T):void;
 }

@@ -16,6 +16,7 @@
             <th *ngFor="let column of dataColumns">
                 {{column.header}}
             </th>
+            <th style="width: 8rem" ></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item>
@@ -26,6 +27,10 @@
             <td *ngFor="let data of dataColumns">
                 <span class="p-column-title">Name</span>
                 {{item[data.field]}}
+            </td>
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editValue(item)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteValue($event,item)"></button>
             </td>
         </tr>
     </ng-template>

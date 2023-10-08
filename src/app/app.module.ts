@@ -6,8 +6,13 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ApiClient } from './service/api/apiClient';
+
 import { HttpClientModule } from '@angular/common/http';
+import { DialogService } from 'primeng/dynamicdialog';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ApiClient } from './service/api/apiClient';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -20,10 +25,15 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     ButtonModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastModule,
+    ConfirmPopupModule
   ],
   providers: [
-    ApiClient
+    ApiClient,
+    DialogService,
+    ConfirmationService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

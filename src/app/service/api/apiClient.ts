@@ -628,7 +628,7 @@ export class ApiClient extends ApiBase {
      * @param orderBy (optional) 
      * @return Success
      */
-    getEmployee3(pageNumber: number | undefined, pageSize: number | undefined, orderBy: string | undefined): Observable<PermissionDTOListApiOkResponse> {
+    getPermission(pageNumber: number | undefined, pageSize: number | undefined, orderBy: string | undefined): Observable<PermissionDTOListApiOkResponse> {
         let url_ = this.baseUrl + "/api/Permission?";
         if (pageNumber === null)
             throw new Error("The parameter 'pageNumber' cannot be null.");
@@ -655,11 +655,11 @@ export class ApiClient extends ApiBase {
         return _observableFrom(this.transformOptions(options_)).pipe(_observableMergeMap(transformedOptions_ => {
             return this.http.request("get", url_, transformedOptions_);
         })).pipe(_observableMergeMap((response_: any) => {
-            return this.processGetEmployee3(response_);
+            return this.processGetPermission(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetEmployee3(response_ as any);
+                    return this.processGetPermission(response_ as any);
                 } catch (e) {
                     return _observableThrow(e) as any as Observable<PermissionDTOListApiOkResponse>;
                 }
@@ -668,7 +668,7 @@ export class ApiClient extends ApiBase {
         }));
     }
 
-    protected processGetEmployee3(response: HttpResponseBase): Observable<PermissionDTOListApiOkResponse> {
+    protected processGetPermission(response: HttpResponseBase): Observable<PermissionDTOListApiOkResponse> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :

@@ -1,0 +1,14 @@
+<p-card>
+    <div class="flex flex-column gap-2">
+        <label htmlFor="name">Name</label>
+        <input id="name" type="text" pInputText  placeholder="Enter Permission..." [(ngModel)]="data!.name"/>
+    </div>
+    <div class="flex flex-column gap-2">
+        <label htmlFor="description">Description</label>
+        <textarea  id="description" rows="5" cols="30" type="text" pInputTextarea   placeholder="Enter Description..." [(ngModel)]="data!.description"></textarea>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (onClick)="cancel()"></p-button>
+    </ng-template>
+</p-card>

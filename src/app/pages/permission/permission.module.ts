@@ -7,9 +7,11 @@ import { DatagridModule } from 'src/app/components/datagrid/datagrid.module';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormModule } from './form/form.module';
 @NgModule({
   declarations: [
-    PermissionComponent
+    PermissionComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,9 @@ import { FileUploadModule } from 'primeng/fileupload';
     ButtonModule,
     FileUploadModule,
     PermissionRoutingModule,
-    DatagridModule
+    DatagridModule,
+    InputTextModule,
+    FormModule
   ]
 })
 export class PermissionModule { }

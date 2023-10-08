@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DatagridComponent } from './datagrid.component';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -14,6 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
     CommonModule,
     TableModule,
     InputTextModule,
+    ButtonModule
   ],
   exports:[
     DatagridComponent
