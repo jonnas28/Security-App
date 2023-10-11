@@ -5,7 +5,9 @@ import { PageBase } from 'src/app/shared/class/page-base.class';
 import { PageDestroy } from 'src/app/shared/class/page-destroy.class';
 import { FormComponent } from './form/form.component';
 import { MessageService } from 'primeng/api';
-import { ApiClient, IdentityRoleDTO, PermissionDTO } from 'src/app/service/api/apiClient';
+import { ApiClient, IdentityRoleDTO, PermissionDTO,ApiBadRequestResponse } from 'src/app/service/api/apiClient';
+import { extractApiError } from 'src/app/shared/helper/extractApiError';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-permission',
@@ -65,12 +67,16 @@ export class PermissionComponent extends PageBase<IdentityRoleDTO> implements Pa
       if(data){
         const res = await lastValueFrom(this.apiClient.addPermission(data)
           .pipe(takeUntil(this.unsubscribe$))
-          .pipe(catchError((e) => {
-            throw e;
+          .pipe(catchError((error) => {
+            if(error){
+              extractApiError(error,this.messageService);
+            }
+            throw(error);
           })))
 
-          if(res.statusCode === 200){
+          if(res.statusCode === HttpStatusCode.Ok){
             this.messageService.add({ severity: 'success', summary: 'Add Permission Success!', detail:data.name });
+            this.loadDataSource();
           }
       }
     });
@@ -86,13 +92,17 @@ export class PermissionComponent extends PageBase<IdentityRoleDTO> implements Pa
       if(data){
         const res = await lastValueFrom(this.apiClient.updatePermission(data.id!,data)
           .pipe(takeUntil(this.unsubscribe$))
-          .pipe(catchError((e) => {
-            throw e;
+          .pipe(catchError((error) => {
+            if(error){
+              extractApiError(error,this.messageService);
+            }
+            throw(error);
           })))
 
-          if(res.statusCode === 200){
-            this.messageService.add({ severity: 'success', summary: 'Update Permission Success!', detail:data.name });
-          }
+        if(res.statusCode === HttpStatusCode.Ok){
+          this.messageService.add({ severity: 'success', summary: 'Update Permission Success!', detail:data.name });
+          this.loadDataSource();
+        }
       }
     });
   }
@@ -101,8 +111,11 @@ export class PermissionComponent extends PageBase<IdentityRoleDTO> implements Pa
     if(data){
       const res = await lastValueFrom(this.apiClient.deletePermission(data.id)
         .pipe(takeUntil(this.unsubscribe$))
-        .pipe(catchError((e) => {
-          throw e;
+        .pipe(catchError((error) => {
+          if(error){
+            extractApiError(error,this.messageService);
+          }
+          throw(error);
         })))
     }
   }
